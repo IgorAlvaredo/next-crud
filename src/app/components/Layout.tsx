@@ -11,7 +11,7 @@ return(
      bg-white text-gray-800 rounded-md
     `}>
             <Titulo> {props.titulo}</Titulo>
-        <div>
+        <div className="p-6">
             {props.children}
         </div>
     </div>
