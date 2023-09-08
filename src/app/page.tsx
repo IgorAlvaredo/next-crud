@@ -3,6 +3,7 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 import Tabela from "@/components/Tabela";
 import Cliente from "@/core/Cliente";
+import Botao from "@/components/Botao";
 
 export default function Home() {
   const clientes = [
@@ -12,9 +13,9 @@ export default function Home() {
     new Cliente("Carlos", 54, "4"),
   ];
 
-  function clienteSelecionado(cliente: Cliente) {}
+  function clienteSelecionado(cliente: Cliente) { }
 
-  function clienteExcluido(cliente: Cliente) {}
+  function clienteExcluido(cliente: Cliente) { }
 
   return (
     <div
@@ -24,6 +25,9 @@ export default function Home() {
      text-white`}
     >
       <Layout titulo="Cadastro Simples">
+        <div className="flex items-center justify-end">
+          <Botao cor="green" className="mb-4">Novo Cliente</Botao>
+        </div>
         <Tabela
           clientes={clientes}
           clienteSelecionado={clienteSelecionado}
