@@ -4,7 +4,7 @@ interface BotaoProps {
   children: any;
 }
 export default function Botao(props: BotaoProps) {
-  const cor = props.cor ?? 'gray';
+  const cor =props.cor ?? 'gray';
 
   return (
     <button className={`

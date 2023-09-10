@@ -7,9 +7,15 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
-    /^bg-/,
-    /^to-/,
-    /^form-/,
+    {
+      pattern: /^bg-/,
+    },
+    {
+      pattern: /^from-/
+    },
+    {
+      pattern: /^to-/
+    }
   ],
   theme: {
     extend: {},
