@@ -8,6 +8,7 @@ import Formulario from "@/components/Formulario";
 import { useState } from "react";
 
 export default function Home() {
+  const [cliente, setCliente] = useState<Cliente>(Cliente.vazio())
   const [visible, setVisivel] = useState<'tabela' | 'form'>('tabela')
   const clientes = [
     new Cliente("Ana", 34, "1"),
@@ -16,12 +17,20 @@ export default function Home() {
     new Cliente("Carlos", 54, "4"),
   ];
 
-  function clienteSelecionado(cliente: Cliente) { }
+  function clienteSelecionado(cliente: Cliente) {
+    setCliente(cliente)
+    setVisivel('form')
+  }
 
   function clienteExcluido(cliente: Cliente) { }
 
   function salvarCliente(cliente: Cliente){
+    setVisivel('tabela')
+  }
 
+  function novoCliente(){
+    setCliente(Cliente.vazio())
+    setVisivel('form')
   }
 
   return (
@@ -36,7 +45,7 @@ export default function Home() {
           (
             <>
               <div className="flex items-center justify-end">
-                <Botao cor="green" className="mb-4" onClick={() => setVisivel('form')}>Novo Cliente</Botao>
+                <Botao cor="green" className="mb-4" onClick={() => novoCliente()}>Novo Cliente</Botao>
               </div>
               <Tabela
                 clientes={clientes}
@@ -45,7 +54,7 @@ export default function Home() {
               />
             </>
           ) : (
-            <Formulario cliente={clientes[0]} clienteMudou={salvarCliente} cancelado={() => setVisivel('tabela')} />
+            <Formulario cliente={cliente} clienteMudou={salvarCliente} cancelado={() => setVisivel('tabela')} />
           )}
 
 
